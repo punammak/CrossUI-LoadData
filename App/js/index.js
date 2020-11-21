@@ -14,6 +14,7 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"api_xml")
+                .setName("api_xml")
                 .setQueryURL("Data/data.xml")
             );
             
@@ -42,7 +43,7 @@ xui.Class('App', 'xui.Module',{
                 xui.create("xui.UI.Div")
                 .setHost(host,"ctl_pane7")
                 .setDock("fill")
-                );
+            );
             
             host.ctl_pane7.append(
                 xui.create("xui.UI.ButtonViews")
@@ -64,8 +65,7 @@ xui.Class('App', 'xui.Module',{
                         "desc":"read json",
                         "type":"control",
                         "target":"api_json",
-                        "args":[
-                        ],
+                        "args":[ ],
                         "method":"invoke",
                         "conditions":[
                             {
@@ -82,7 +82,8 @@ xui.Class('App', 'xui.Module',{
                         "type":"control",
                         "target":"treegrid1",
                         "args":[
-                            {},
+                            {
+                            },
                             {
                                 "header":"{temp.okData.header}",
                                 "rows":"{temp.okData.rows}"
@@ -106,8 +107,7 @@ xui.Class('App', 'xui.Module',{
                         "desc":"read xml",
                         "type":"control",
                         "target":"api_xml",
-                        "args":[
-                        ],
+                        "args":[ ],
                         "method":"invoke",
                         "conditions":[
                             {
@@ -124,7 +124,8 @@ xui.Class('App', 'xui.Module',{
                         "type":"control",
                         "target":"treegrid2",
                         "args":[
-                            {},
+                            {
+                            },
                             {
                                 "rows":"{temp.okData.rows}",
                                 "header":"{temp.okData.header}"
@@ -145,26 +146,49 @@ xui.Class('App', 'xui.Module',{
                         ]
                     }
                 ])
-                );
+            );
             
             host.ctl_buttonviews1.append(
                 xui.create("xui.UI.TreeGrid")
                 .setHost(host,"treegrid2")
                 .setRowHandler(false)
                 .setColHidable(true)
-                .setColMovable(true)
-                .setHeader({})
-                .setGrpCols({})
-                .setRows({})
-                , "xml");
+                .setColMovable(true),
+                "xml"
+            );
             
             host.ctl_buttonviews1.append(
                 xui.create("xui.UI.TreeGrid")
                 .setHost(host,"treegrid1")
                 .setRowHandler(false)
                 .setColHidable(true)
-                .setColMovable(true)
-                , "json");
+                .setColMovable(true),
+                "json"
+            );
+            
+            host.ctl_buttonviews1.append(
+                xui.create("xui.UI.ComboInput")
+                .setHost(host,"xui_ui_comboinput3")
+                .setLeft("7.619047619047619em")
+                .setTop("6.095238095238095em")
+                .setWidth("18em")
+                .setLabelSize("8em")
+                .setLabelCaption("Date Picker")
+                .setType("date"),
+                "json"
+            );
+            
+            host.ctl_buttonviews1.append(
+                xui.create("xui.UI.ComboInput")
+                .setHost(host,"xui_ui_comboinput4")
+                .setLeft("11.428571428571429em")
+                .setTop("12.19047619047619em")
+                .setWidth("18em")
+                .setLabelSize("8em")
+                .setLabelCaption("Counter")
+                .setType("counter"),
+                "json"
+            );
             
             append(
                 xui.create("xui.UI.Button")
@@ -182,7 +206,8 @@ xui.Class('App', 'xui.Module',{
                             {
                                 "editable":true
                             },
-                            {}
+                            {
+                            }
                         ],
                         "method":"setProperties",
                         "event":1
@@ -195,7 +220,8 @@ xui.Class('App', 'xui.Module',{
                             {
                                 "editable":true
                             },
-                            {}
+                            {
+                            }
                         ],
                         "method":"setProperties"
                     }
